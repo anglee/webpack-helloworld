@@ -1,5 +1,7 @@
 // http://webpack.github.io/docs/configuration.html
 
+var webpack = require('webpack');
+
 module.exports = {
   entry: './src/app.js',
   output: {
@@ -9,7 +11,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
@@ -28,6 +30,8 @@ module.exports = {
   },
   profile: true,
   debug: true,
-  devtool: '#source-map'
-
+  devtool: '#source-map',
+  plugins: [
+    new webpack.NoErrorsPlugin()
+  ]
 };
